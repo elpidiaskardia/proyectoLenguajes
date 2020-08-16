@@ -7,3 +7,5 @@ class Automata :
     def getNodos(self):
         return self.nodos
 
+    print('elpidiakardia daka54')
+
