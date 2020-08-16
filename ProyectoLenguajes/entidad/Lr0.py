@@ -1,4 +1,4 @@
-import entidad.Gramatica;
+from entidad import Gramatica;
 #clase que hereda de Gramatica
 class Lr0(Gramatica):
 
