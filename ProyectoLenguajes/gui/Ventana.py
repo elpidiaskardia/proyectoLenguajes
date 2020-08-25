@@ -1,6 +1,6 @@
 from tkinter import *
 import os
-from gui import Animacion
+import Animacion
 #bloque que representa la ventana que ve el usuario, utiliza los metodos de control gramatica
 #para realizar las operaciones de los botones
 
