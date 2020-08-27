@@ -15,3 +15,4 @@ class ControlGramatica:
 
     def generarTabla(self,tabla):
         print("");
+

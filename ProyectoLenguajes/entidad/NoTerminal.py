@@ -1,14 +1,14 @@
 #clase terminal de una gramatica
-class Terminal:
+class NoTerminal:
 
     #@param nombre calor del terminar,
     #@param siguientes son los siguientes del terminal almacenados en una lista de str
     #@param primeros son los primeros del terminal almacenados en una lista de str
 
-    def __init__(self,nombre,siguientes,primeros):
+    def __init__(self,nombre):
         self.nombre=nombre
-        self.siguientes=siguientes
-        self.primeros=primeros
+        self.siguientes=[]
+        self.primeros=[]
 
     #metodo que agraga a al diccionario de siguientes un siguiente el siguiente de
     #este terminal, retorna un booleano si se ha agregao con exito,

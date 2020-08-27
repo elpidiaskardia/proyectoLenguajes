@@ -1,38 +1,45 @@
 
 #Clase gramatica que contiene su gramatica y los terminales
 #pertenecientes a este
-#@version 1.0
-
+#@version 2.0
+import os
+from entidad.NoTerminal import NoTerminal
 class Gramatica:
-
-    def _init_(self,gramatica,terminales):
-        self.gramatica =gramatica
-        self.terminales=terminales
+    gramaticaa={}
+    noterminal=[]
+    def _init_(self):
+        self.gramaticaa ={}
+        self.noterminal=[]
 
 #se lee el archivo de texto  con la gramatica para generar un diccionarion con toda esta informacion
 #si el archivo no es .txt se lanza una excepcion
 
     def leerGramatica(self,archivo):
-        print("")
-
-#metodo que crea los terminales, este se genera por medio de un archivo de texto
-#que al leerse se interpretara la informacion para poder crear los terminales
-#son los valoes iniciales en los saltos de texto antes de una flecha
-#@:param nombre del terminal que se agregara al diccionario terminales
-
-    def crearTerminales(self,nombre):
-        print("")
+        f = open(archivo,"r")
+        for linea in f.readlines():
+          expresion = linea.split('->')
+          self.gramaticaa[expresion[0]] = {NoTerminal(expresion[0]): expresion[1]}
+        f.close()
 
 #  metodo que calcula los primeros dado el terminal
- # @:param nombre valor del terminal
+
 
     def calcularPrimeros(self,nombre):
-        print("")
+        auxiliarExpresion= self.gramaticaa.get(nombre).values()[0][0]
+        if auxiliarExpresion in self.gramaticaa.keys():
+            if self.gramaticaa.get(auxiliarExpresion).keys()[0].primeros == []:
+                self.calcularPrimeros(auxiliarExpresion)
+            else:
+                self.gramaticaa.get(nombre).keys()[0].primeros += self.gramaticaa.get(auxiliarExpresion).keys()[0].primeros
+        else:
+            self.gramaticaa.get(nombre).keys()[0].primeros.append(auxiliarExpresion)
 
+            if  auxiliarExpresion =="λ":
+                self.gramaticaa.get(nombre).keys()[0].primeros.append(auxiliarExpresion)
 #metodo que calcula los segundos dado el terminal
 #@param nombre del terminal
 
-    def calcularSegundos(self,nombre):
+    def calcularSiguientes(self,nombre):
         print("")
 
 #se genera el automata con la informacion de la gramatica,
