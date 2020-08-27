@@ -1,9 +1,15 @@
 from tkinter import *
 import os
+<<<<<<< HEAD
 from tkinter import  filedialog
 from tkinter.simpledialog import *
 from gui import Animacion
 from entidad.Gramatica import Gramatica
+=======
+import Animacion
+#bloque que representa la ventana que ve el usuario, utiliza los metodos de control gramatica
+#para realizar las operaciones de los botones
+>>>>>>> 83c04588cf004cea66ec2d41567c92cb90ffbb05
 
 gramatica=Gramatica()
 # bloque que representa la ventana que ve el usuario, utiliza los metodos de control gramatica
