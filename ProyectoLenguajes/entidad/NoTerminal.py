@@ -7,6 +7,7 @@ class NoTerminal:
 
     def __init__(self,nombre):
         self.nombre=nombre
+        self.expresiones = []
         self.siguientes=[]
         self.primeros=[]
 
@@ -19,4 +20,5 @@ class NoTerminal:
      #metodo que agrega a la lista de str de primeros, los primeros de este terminal
     #retorna un true sde ser exitoso o un false de no serlo
     def agregarPrimero(self,pimero):
-        print("")
+        if  pimero not in self.primeros:
+            self.primeros.append(pimero)
