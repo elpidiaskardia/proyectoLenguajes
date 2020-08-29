@@ -3,9 +3,9 @@ import os
 
 from tkinter import  filedialog
 from tkinter.simpledialog import *
-import Animacion
+from gui import Animacion
 
-from ProyectoLenguajes.entidad.Gramatica import  Gramatica
+from entidad.Gramatica import  Gramatica
 
 #bloque que representa la ventana que ve el usuario, utiliza los metodos de control gramatica
 #para realizar las operaciones de los botones

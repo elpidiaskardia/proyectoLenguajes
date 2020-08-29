@@ -5,6 +5,7 @@ class NoTerminal:
     #@param siguientes son los siguientes del terminal almacenados en una lista de str
     #@param primeros son los primeros del terminal almacenados en una lista de str
 
+
     def __init__(self,nombre):
         self.nombre=nombre
         self.expresiones = []
