@@ -3,10 +3,10 @@
 #pertenecientes a este
 #@version 2.0
 from entidad.NoTerminal import NoTerminal
-
-
+from entidad.Nodo import Nodo
+from entidad.Automata import Automata
 class Gramatica:
-
+    automata = Automata()
     gramaticaa={}
     noterminal=[]
     def __init__(self):
@@ -55,7 +55,7 @@ class Gramatica:
         for noteminal in reversed(list(self.gramaticaa)):
             for Expresion in self.gramaticaa.get(noteminal).expresiones:
                 if Expresion[0]  in self.gramaticaa.keys():
-                    self.gramaticaa.get(noteminal).primeros += self.gramaticaa.get(Expresion[0]).primeros
+                    self.gramaticaa.get(noteminal).agregarPrimero(self.gramaticaa.get(Expresion[0]).primeros)
 
 
 
@@ -65,21 +65,33 @@ class Gramatica:
 #@param nombre del terminal
 
     def calcularSiguientes(self):
+        for noterminal1 in self.gramaticaa.keys():
+            for noteminal in self.gramaticaa.keys():
+                if noteminal =='S`':
+                    self.gramaticaa.get('S`').agregarSiguientes('$')
+                else :
+                    #no se recorre toda la gramatica, es necesario cambiar eso para poder mirar en donde estan
+                    #los no terminales y sacar sus siguientes
+                    for Expresion in self.gramaticaa.get(noteminal).expresiones:
+                        auxExpresion = Expresion.split(' ')
+                        if noterminal1 in  auxExpresion:
+                            siguientee =  auxExpresion.index(noterminal1)+1
+                            if  auxExpresion[siguientee].strip() not in self.gramaticaa.keys():
+                                self.gramaticaa.get(noterminal1).agregarSiguientes(auxExpresion[siguientee].strip())
+                            else :
+        #aqui van los siguientes que son no terminales
+                                    self.gramaticaa.get(noterminal1).agregarSiguientes(self.gramaticaa.get(auxExpresion[siguientee].strip()).primeros)
+        for noterminal1 in self.gramaticaa.keys():
+            for noteminal in self.gramaticaa.keys():
+                    #no se recorre toda la gramatica, es necesario cambiar eso para poder mirar en donde estan
+                    #los no terminales y sacar sus siguientes
+                    for Expresion in self.gramaticaa.get(noteminal).expresiones:
+                        auxExpresion = Expresion.split(' ')
+                        if noterminal1 in  auxExpresion:
+                            siguientee =  auxExpresion.index(noterminal1)+1
+                            if  siguientee >= len(auxExpresion) or auxExpresion[siguientee]=='' :
+                                self.gramaticaa.get(noterminal1).agregarSiguientes(self.gramaticaa.get(noteminal).siguientes)
 
-        for noteminal in self.gramaticaa.keys():
-            if noteminal =='S`':
-                self.gramaticaa.get('S`').siguientes.append('$')
-            else :
-                #no se recorre toda la gramatica, es necesario cambiar eso para poder mirar en donde estan
-                #los no terminales y sacar sus siguientes
-                for Expresion in self.gramaticaa.get(noteminal).expresiones:
-                    auxExpresion = Expresion.split(' ')
-                    if noteminal in  auxExpresion:
-                        siguientee =  auxExpresion.index(noteminal)+1
-                        if  auxExpresion[siguientee] not in self.gramaticaa.keys():
-                            self.gramaticaa.get(noteminal).siguientes.append( auxExpresion[siguientee])
-                        else :
-                            print('aqui van los siguientes que son no terminales')
 
     def imprimirSiguientes(self):
         for llaver,valor in self.gramaticaa.items():
@@ -89,6 +101,14 @@ class Gramatica:
             for expreciones in valor.expresiones:
                  print('expresion: ' + expreciones)
     #se genera el automata con la informacion de la gramatica,
-    def  llenarAutomata(self):
-        print("")
+    def  llenarAutomataLR0(self,gramatica):
+        for noterminal in gramatica.keys():
+            for expresion in gramatica.get(noterminal).expresiones:
+                auxExpresion = expresion.split(' ')
+                punto = auxExpresion.index('.')
+
+                #NOterminal
+                if auxExpresion[punto+1].strip()  in gramatica.keys():
+                    gramatica[auxExpresion[punto+1]]=self.gramaticaa.get(auxExpresion[punto+1])
+                    #siguen los llamados recursivos y listo papus ;v
 

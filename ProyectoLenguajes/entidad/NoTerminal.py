@@ -16,10 +16,14 @@ class NoTerminal:
     #este terminal, retorna un booleano si se ha agregao con exito,
     #false en caso de no serlo
     def agregarSiguientes(self,siguiente):
-        print("")
+        for auxiliar_siguiente in siguiente:
+            if  auxiliar_siguiente not in self.siguientes:
+                self.siguientes.append(auxiliar_siguiente)
 
      #metodo que agrega a la lista de str de primeros, los primeros de este terminal
     #retorna un true sde ser exitoso o un false de no serlo
-    def agregarPrimero(self,pimero):
-        if  pimero not in self.primeros:
-            self.primeros.append(pimero)
+    def agregarPrimero(self,primero):
+        for auxiliar_primero in primero:
+            if  auxiliar_primero not in self.primeros:
+                self.primeros.append(auxiliar_primero)
+
