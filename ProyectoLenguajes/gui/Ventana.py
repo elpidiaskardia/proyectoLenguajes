@@ -93,3 +93,4 @@ generarTablaLr0Button.grid(column=0, row=6, padx=5, pady=5, sticky='n', columnsp
 generarTablaLr0Button.config(width=15, height=0)
 
 root.mainloop()
+

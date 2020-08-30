@@ -16,3 +16,4 @@ class Animacion:
         pygame.display.set_caption('Animacion')
         self.colorA = 255, 247, 236
 
+
