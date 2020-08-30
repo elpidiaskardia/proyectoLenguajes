@@ -1,8 +1,8 @@
 #clase automata que contiene una list de nodos
 class Automata :
-    def __init__(self,nodos):
+    def __init__(self):
 
-        self.nodos=nodos
+        self.nodos=[]
 
     def getNodos(self):
         return self.nodos
