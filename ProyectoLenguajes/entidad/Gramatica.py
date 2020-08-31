@@ -36,9 +36,9 @@ class Gramatica:
         self. imprimirSiguientes()
         prueba_punto =self.ponerPuntosGramatica(self.gramaticaa)
         for llave,val in prueba_punto.items():
-            print('aquiii->> '+llave)
+            print('no terminal->> '+llave)
             for expresion in val.expresiones:
-                print('estos papi== '+expresion)
+                print('expresion con punto='+expresion)
 
 #  metodo que calcula los primeros dado el terminal
 
@@ -108,7 +108,6 @@ class Gramatica:
                  print('expresion: ' + expreciones)
     #Agrega los puntos iniciales a las expresiones de los no terminales
     def ponerPuntosGramatica(self,gramatica):
-
         for noterminal in gramatica.keys():
             for expresion in gramatica.get(noterminal).expresiones:
                     expresion= '.'+ expresion[0]
