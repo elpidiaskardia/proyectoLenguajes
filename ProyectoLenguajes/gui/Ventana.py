@@ -29,7 +29,7 @@ def cargarGramatica():
 
 # metodo que genera el automata de la gramatica lr0
 def generarAutomataLr0():
-    print("")
+    print('')
 
 
 # metodo que genera el automata de la gramatica lr1

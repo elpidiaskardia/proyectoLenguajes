@@ -2,11 +2,12 @@
 #Clase gramatica que contiene su gramatica y los terminales
 #pertenecientes a este
 #@version 2.0
-from ..entidad.NoTerminal import NoTerminal
-from ..entidad.Nodo import Nodo
-from ..entidad.Automata import Automata
 from graphviz import *
 import os
+from entidad.NoTerminal import NoTerminal
+from entidad.Nodo import Nodo
+from entidad.Automata import Automata
+
 class Gramatica:
     automata = Automata()
     gramaticaa={}
@@ -35,6 +36,11 @@ class Gramatica:
         self.imprimirPrimero()
         self.calcularSiguientes()
         self. imprimirSiguientes()
+        prueba_punto =self.ponerPuntosGramatica(self.gramaticaa)
+        for llave,val in prueba_punto.items():
+            print('aquiii->> '+llave)
+            for expresion in val.expresiones:
+                print('estos papi== '+expresion)
         self.pruebaImp()
 
 
@@ -86,7 +92,7 @@ class Gramatica:
 #@param nombre del terminal
 
     def calcularSiguientes(self):
-        self.gramaticaa.get('S`').agregarSiguiente('#')
+        self.gramaticaa.get('S`').agregarSiguiente('$')
         for noterminal1 in self.gramaticaa.keys():
             for noteminal in self.gramaticaa.keys():
                     #los no terminales y sacar sus siguientes
@@ -121,6 +127,16 @@ class Gramatica:
                 print('siguientes: '+ siguientes)
             for expreciones in valor.expresiones:
                  print('expresion: ' + expreciones)
+    #Agrega los puntos iniciales a las expresiones de los no terminales
+    def ponerPuntosGramatica(self,gramatica):
+
+        for noterminal in gramatica.keys():
+            for expresion in gramatica.get(noterminal).expresiones:
+                    expresion= '.'+ expresion[0]
+
+
+        return gramatica
+
     #se genera el automata con la informacion de la gramatica,
 
     def  llenarAutomataLR0(self,gramatica):
