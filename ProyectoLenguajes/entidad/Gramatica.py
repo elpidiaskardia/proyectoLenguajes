@@ -5,7 +5,8 @@
 from ..entidad.NoTerminal import NoTerminal
 from ..entidad.Nodo import Nodo
 from ..entidad.Automata import Automata
-
+from graphviz import *
+import os
 class Gramatica:
     automata = Automata()
     gramaticaa={}
@@ -34,8 +35,27 @@ class Gramatica:
         self.imprimirPrimero()
         self.calcularSiguientes()
         self. imprimirSiguientes()
+        self.pruebaImp()
+
 
 #  metodo que calcula los primeros dado el terminal
+    def pruebaImp(self):
+        g = Graph(format='dot')
+        for llaver,valor in self.gramaticaa.items():
+
+            Nodo = llaver +'\n Primeros=  '
+            for primero in valor.primeros:
+                Nodo += primero + '  '
+            Nodo +='  \n siguiente=  '
+            for siguiente in valor.siguientes:
+                Nodo += siguiente + '  '
+            Nodo += ' '
+            g.edge(Nodo, 'ALV si dio, Traiga ronnnn')
+
+
+        g.save()
+        os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz 2.44.1/'
+        os.system('dot -Tpng Graph.gv -o random.png')
 
     def imprimirPrimero(self):
         for llaver,valor in self.gramaticaa.items():
@@ -66,7 +86,7 @@ class Gramatica:
 #@param nombre del terminal
 
     def calcularSiguientes(self):
-        self.gramaticaa.get('S`').agregarSiguiente('$')
+        self.gramaticaa.get('S`').agregarSiguiente('#')
         for noterminal1 in self.gramaticaa.keys():
             for noteminal in self.gramaticaa.keys():
                     #los no terminales y sacar sus siguientes

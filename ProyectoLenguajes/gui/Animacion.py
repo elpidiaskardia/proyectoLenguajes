@@ -2,6 +2,7 @@ from tkinter import *
 import pygame
 #clase que se encarga de general el automata y la tabla
 #version 1.0
+
 class Animacion:
 
     def __init__(self,ControlGramatica):
@@ -15,5 +16,12 @@ class Animacion:
         # cambio titulo
         pygame.display.set_caption('Animacion')
         self.colorA = 255, 247, 236
+
+
+
+
+        imagen = pygame.image.load('.prueba.png')
+        self.screen.blit(imagen, (20, 20))
+        pygame.display.update()
 
 
