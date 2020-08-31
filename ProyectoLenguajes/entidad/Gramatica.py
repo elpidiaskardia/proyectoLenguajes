@@ -4,9 +4,9 @@
 #@version 2.0
 from graphviz import *
 import os
-from entidad.NoTerminal import NoTerminal
-from entidad.Nodo import Nodo
-from entidad.Automata import Automata
+from ..entidad.NoTerminal import NoTerminal
+from ..entidad.Nodo import Nodo
+from ..entidad.Automata import Automata
 
 class Gramatica:
     automata = Automata()
@@ -38,15 +38,11 @@ class Gramatica:
         self. imprimirSiguientes()
         prueba_punto =self.ponerPuntosGramatica(self.gramaticaa)
         for llave,val in prueba_punto.items():
-            print('no terminal->> '+llave)
+            print('aquiii->> '+llave)
             for expresion in val.expresiones:
-<<<<<<< HEAD
-                print('expresion con punto='+expresion)
-=======
                 print('estos papi== '+expresion)
         self.pruebaImp()
 
->>>>>>> fa682f476cb73773b7cd0ceab16b2a5890512f6b
 
 #  metodo que calcula los primeros dado el terminal
     def pruebaImp(self):
@@ -133,10 +129,11 @@ class Gramatica:
                  print('expresion: ' + expreciones)
     #Agrega los puntos iniciales a las expresiones de los no terminales
     def ponerPuntosGramatica(self,gramatica):
+
         for noterminal in gramatica.keys():
             for expresion in gramatica.get(noterminal).expresiones:
                     ubicacion = gramatica.get(noterminal).expresiones.index(expresion)
-                    gramatica.get(noterminal).expresiones[ubicacion] = ('.' + expresion)
+                    gramatica.get(noterminal).expresiones[ubicacion] = ('. ' + expresion)
 
 
         return gramatica
