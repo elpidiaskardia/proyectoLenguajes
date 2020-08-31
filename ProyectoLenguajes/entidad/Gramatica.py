@@ -132,7 +132,8 @@ class Gramatica:
 
         for noterminal in gramatica.keys():
             for expresion in gramatica.get(noterminal).expresiones:
-                    expresion= '.'+ expresion[0]
+                    ubicacion = gramatica.get(noterminal).expresiones.index(expresion)
+                    gramatica.get(noterminal).expresiones[ubicacion] = ('.' + expresion)
 
 
         return gramatica
