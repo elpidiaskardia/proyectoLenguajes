@@ -2,6 +2,8 @@
 #Clase gramatica que contiene su gramatica y los terminales
 #pertenecientes a este
 #@version 2.0
+from graphviz import *
+import os
 from entidad.NoTerminal import NoTerminal
 from entidad.Nodo import Nodo
 from entidad.Automata import Automata
@@ -38,9 +40,32 @@ class Gramatica:
         for llave,val in prueba_punto.items():
             print('no terminal->> '+llave)
             for expresion in val.expresiones:
+<<<<<<< HEAD
                 print('expresion con punto='+expresion)
+=======
+                print('estos papi== '+expresion)
+        self.pruebaImp()
+
+>>>>>>> fa682f476cb73773b7cd0ceab16b2a5890512f6b
 
 #  metodo que calcula los primeros dado el terminal
+    def pruebaImp(self):
+        g = Graph(format='dot')
+        for llaver,valor in self.gramaticaa.items():
+
+            Nodo = llaver +'\n Primeros=  '
+            for primero in valor.primeros:
+                Nodo += primero + '  '
+            Nodo +='  \n siguiente=  '
+            for siguiente in valor.siguientes:
+                Nodo += siguiente + '  '
+            Nodo += ' '
+            g.edge(Nodo, 'ALV si dio, Traiga ronnnn')
+
+
+        g.save()
+        os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz 2.44.1/'
+        os.system('dot -Tpng Graph.gv -o random.png')
 
     def imprimirPrimero(self):
         for llaver,valor in self.gramaticaa.items():
@@ -110,17 +135,19 @@ class Gramatica:
     def ponerPuntosGramatica(self,gramatica):
         for noterminal in gramatica.keys():
             for expresion in gramatica.get(noterminal).expresiones:
-                    expresion= '.'+ expresion[0]
+                    ubicacion = gramatica.get(noterminal).expresiones.index(expresion)
+                    gramatica.get(noterminal).expresiones[ubicacion] = ('.' + expresion)
 
 
         return gramatica
 
     #se genera el automata con la informacion de la gramatica,
+
     def  llenarAutomataLR0(self,gramatica):
         gramatica=self.OrganizarLR0PuntosSiguientes(gramatica)
 
 
-    def organizarLR0PuntosSiguientes(self,gramatica):
+    def OrganizarLR0PuntosSiguientes(self,gramatica):
         for noterminal in gramatica.keys():
             for Expresion in gramatica.get(noterminal).expresiones:
                 listaExpresion = Expresion.split(' ')

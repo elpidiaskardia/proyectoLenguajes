@@ -2,10 +2,14 @@ from tkinter import *
 import os
 
 from tkinter import  filedialog
+from tkinter import *
 from tkinter.simpledialog import *
-from gui import Animacion
+import Animacion
 
-from entidad.Gramatica import  Gramatica
+from subprocess import check_call
+import pydot
+
+from ProyectoLenguajes.entidad.Gramatica import  Gramatica
 
 #bloque que representa la ventana que ve el usuario, utiliza los metodos de control gramatica
 #para realizar las operaciones de los botones
@@ -57,6 +61,7 @@ anime = Animacion
 ve = Frame(root, width=200, height=650)
 ve.config(bg="DodgerBlue4")
 
+
 # fdistribucion de los frame para la animacion y ventana
 ve.grid(column=1, row=0)
 vs.grid(column=2, row=0)
@@ -91,6 +96,13 @@ generarTablaLr0Button = Button(ve, text="Tabla LR0", fg='white', background='nav
                                command=generarTablaLr0)
 generarTablaLr0Button.grid(column=0, row=6, padx=5, pady=5, sticky='n', columnspan='2')
 generarTablaLr0Button.config(width=15, height=0)
+
+canvas = Canvas(root, width = 300, height = 300)
+
+
+
+
+
 
 root.mainloop()
 
