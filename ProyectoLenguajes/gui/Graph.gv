@@ -1,14 +1,265 @@
 graph {
-	"S`
- Primeros=  id  (    
- siguiente=  $   " -- "ALV si dio, Traiga ronnnn"
-	"E
- Primeros=  id  (    
- siguiente=  +  )  $   " -- "ALV si dio, Traiga ronnnn"
-	"T
- Primeros=  id  (    
- siguiente=  *  +  )  $   " -- "ALV si dio, Traiga ronnnn"
-	"F
- Primeros=  id  (    
- siguiente=  *  +  )  $   " -- "ALV si dio, Traiga ronnnn"
+	"S`-> . E
+E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "S`->  E .
+E->  E . + T
+
+" [label=E]
+	"S`->  E .
+E->  E . + T
+
+" -- "E->  E  + . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" [label="+"]
+	"E->  E  + . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "E->  E  +  T .
+
+T->  T . * F
+
+" [label=T]
+	"E->  E  +  T .
+
+T->  T . * F
+
+" -- "T->  T  * . F
+
+F-> . id
+
+F-> . ( E )
+" [label="*"]
+	"T->  T  * . F
+
+F-> . id
+
+F-> . ( E )
+" -- "T->  T  *  F .
+
+" [label=F]
+	"T->  T  * . F
+
+F-> . id
+
+F-> . ( E )
+" -- "F->  id .d
+
+" [label=id]
+	"T->  T  * . F
+
+F-> . id
+
+F-> . ( E )
+" -- "E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F->  ( . E )
+" [label="("]
+	"E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F->  ( . E )
+" -- "E->  E . + T
+
+F->  (  E . )
+" [label=E]
+	"E->  E . + T
+
+F->  (  E . )
+" -- "E->  E  + . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" [label="+"]
+	"E->  E . + T
+
+F->  (  E . )
+" -- "F->  (  E  ) .
+" [label=")"]
+	"E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F->  ( . E )
+" -- "E->  T .
+
+T->  T . * F
+
+" [label=T]
+	"E->  T .
+
+T->  T . * F
+
+" -- "T->  T  * . F
+
+F-> . id
+
+F-> . ( E )
+" [label="*"]
+	"E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F->  ( . E )
+" -- "T->  F .
+
+" [label=F]
+	"E->  E  + . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "T->  F .
+
+" [label=F]
+	"E->  E  + . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "F->  id .d
+
+" [label=id]
+	"E->  E  + . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F->  ( . E )
+" [label="("]
+	"S`-> . E
+E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "E->  T .
+
+T->  T . * F
+
+" [label=T]
+	"S`-> . E
+E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "T->  F .
+
+" [label=F]
+	"S`-> . E
+E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "F->  id .d
+
+" [label=id]
+	"S`-> . E
+E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F-> . id
+
+F-> . ( E )
+" -- "E-> . E + T
+
+E-> . T
+
+T-> . T * F
+
+T-> . F
+
+F->  ( . E )
+" [label="("]
 }

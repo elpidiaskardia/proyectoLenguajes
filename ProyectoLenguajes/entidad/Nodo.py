@@ -6,5 +6,19 @@ class Nodo:
     #@param valores son el diccionario con el valore o nombre del nodo, los fragmentos de la gramatica
 
     def __init__(self,gramatica):
-        self.gramatica = gramatica
-        self.rutasSiguientes ={}
+        self.gramatica=gramatica
+        self.siguientes={}
+        self.texto=self.textoNodo(gramatica)
+
+    def getValores(self):
+        return self.valores
+
+    def getRelaciones(self):
+        return self.relaciones
+    def textoNodo(self,gramatica):
+        texto=''
+        for noterminal in gramatica.keys():
+            for Expresion in gramatica.get(noterminal).expresiones:
+                texto += noterminal+ '-> ' +Expresion+'\n'
+
+        return texto
