@@ -4,14 +4,16 @@
 #@version 2.0
 from graphviz import *
 import os
-from ..entidad.NoTerminal import NoTerminal
-from ..entidad.Nodo import Nodo
-from ..entidad.Automata import Automata
+from entidad.NoTerminal import NoTerminal
+from entidad.Nodo import Nodo
+from entidad.Automata import Automata
 
 class Gramatica:
     automata = Automata()
     gramaticaa={}
+    gramaticaaPuntos={}
     noterminal=[]
+
     def __init__(self):
         self.gramaticaa={'S`':NoTerminal('S`')}
         self.noterminal=[]
@@ -36,15 +38,12 @@ class Gramatica:
         self.imprimirPrimero()
         self.calcularSiguientes()
         self. imprimirSiguientes()
-        prueba_punto =self.ponerPuntosGramatica(self.gramaticaa)
-        for llave,val in prueba_punto.items():
-            print('aquiii->> '+llave)
-            for expresion in val.expresiones:
-                print('estos papi== '+expresion)
+        self.gramaticaaPuntos =self.gramaticaa
+        self.gramaticaaPuntos= self.ponerPuntosGramatica(self.gramaticaaPuntos)
         self.pruebaImp()
 
 
-#  metodo que calcula los primeros dado el terminal
+
     def pruebaImp(self):
         g = Graph(format='dot')
         for llaver,valor in self.gramaticaa.items():
@@ -60,7 +59,7 @@ class Gramatica:
 
 
         g.save()
-        os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz 2.44.1/'
+        os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz 2.44.1/bin'
         os.system('dot -Tpng Graph.gv -o random.png')
 
     def imprimirPrimero(self):
@@ -141,8 +140,43 @@ class Gramatica:
     #se genera el automata con la informacion de la gramatica,
 
     def  llenarAutomataLR0(self,gramatica):
-        gramatica=self.OrganizarLR0PuntosSiguientes(gramatica)
 
+        gramat=self.OrganizarLR0PuntosSiguientes(gramatica)
+        nodito = Nodo(gramat)
+        if self.verificarFinLro(gramat) ==True:
+
+            self.automata.nodos.append(nodito)
+        else:
+            self.recursionLr0(gramat)
+
+        return nodito
+
+    def recursionLr0(self,gramatica):
+        for noterminal in gramatica.keys():
+            for Expresion in gramatica.get(noterminal).expresiones:
+                listaExpresion = Expresion.split(' ')
+                for auxExpresion in listaExpresion:
+                    if auxExpresion.strip() == '.':
+                        punto = auxExpresion.index('.')
+                        if punto < len(listaExpresion):
+                            siguiente = listaExpresion[punto+1].strip()
+                            self.moviendoFilas(gramatica,siguiente)
+
+    def moviendoFilas(self,gramatica,siguiente):
+        for noterminal in gramatica.keys():
+            for Expresion in gramatica.get(noterminal).expresiones:
+                listaExpresion = Expresion.split(' ')
+                cumple=False
+                for auxExpresion in listaExpresion:
+                    if auxExpresion.strip() == '.':
+                        punto = auxExpresion.index('.')
+                        if punto < len(listaExpresion) and listaExpresion[punto +1].strip() ==siguiente:
+                            cumple=True
+                            ubicacionExpresion = gramatica.get(noterminal).expresiones.index(Expresion)
+                            gramatica.get(noterminal).expresiones[ubicacionExpresion].replace('. ' + siguiente,siguiente + ' .')
+                if cumple:
+                    gramatica.get(noterminal).expresiones.pop(Expresion)
+        self.llenarAutomataLR0(gramatica)
 
     def OrganizarLR0PuntosSiguientes(self,gramatica):
         for noterminal in gramatica.keys():
@@ -153,6 +187,20 @@ class Gramatica:
                         punto = auxExpresion.index('.')
                     # NOterminal
                         if punto + 1 <len(listaExpresion)and listaExpresion[punto + 1].strip() in gramatica.keys():
-                            gramatica[listaExpresion[punto + 1]] = self.gramaticaa.get(listaExpresion[punto + 1])
+                            gramatica[listaExpresion[punto + 1]] = self.gramaticaaPuntos.get(listaExpresion[punto + 1])
                             # siguen los llamados recursivos y listo papus ;v
         return gramatica
+
+
+
+    def verificarFinLro(self,gramatica):
+        esFinal=True
+        for noterminal in gramatica.keys():
+            for Expresion in gramatica.get(noterminal).expresiones:
+                listaExpresion = Expresion.split(' ')
+                if listaExpresion[len(listaExpresion)].strip()=='.' and esFinal:
+                    esFinal=True
+                else:
+                    esFinal=False
+
+        return esFinal

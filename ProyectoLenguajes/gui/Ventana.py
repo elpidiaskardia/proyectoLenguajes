@@ -7,9 +7,9 @@ from tkinter.simpledialog import *
 import Animacion
 
 from subprocess import check_call
-import pydot
 
-from ProyectoLenguajes.entidad.Gramatica import  Gramatica
+
+from entidad.Gramatica import  Gramatica
 
 #bloque que representa la ventana que ve el usuario, utiliza los metodos de control gramatica
 #para realizar las operaciones de los botones
@@ -29,6 +29,8 @@ def cargarGramatica():
 
 # metodo que genera el automata de la gramatica lr0
 def generarAutomataLr0():
+    #gramatica.ponerPuntosGramatica()
+    #gramatica.llenarAutomataLR0()
     print('')
 
 

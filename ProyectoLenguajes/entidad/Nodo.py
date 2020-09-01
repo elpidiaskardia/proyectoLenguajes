@@ -5,11 +5,6 @@ class Nodo:
     #@param relaciones es un diccionario con las relaciones de este nodo con otros nodos
     #@param valores son el diccionario con el valore o nombre del nodo, los fragmentos de la gramatica
 
-    def __init__(self,valores,relaciones):
-        self.valores=valores
-        self.relaciones=relaciones
-    def getValores(self):
-        return self.valores
-
-    def getRelaciones(self):
-        return self.relaciones
+    def __init__(self,gramatica):
+        self.gramatica = gramatica
+        self.rutasSiguientes ={}

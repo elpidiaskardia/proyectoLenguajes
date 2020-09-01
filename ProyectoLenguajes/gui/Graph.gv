@@ -1,0 +1,14 @@
+graph {
+	"S`
+ Primeros=  id  (    
+ siguiente=  $   " -- "ALV si dio, Traiga ronnnn"
+	"E
+ Primeros=  id  (    
+ siguiente=  +  )  $   " -- "ALV si dio, Traiga ronnnn"
+	"T
+ Primeros=  id  (    
+ siguiente=  *  +  )  $   " -- "ALV si dio, Traiga ronnnn"
+	"F
+ Primeros=  id  (    
+ siguiente=  *  +  )  $   " -- "ALV si dio, Traiga ronnnn"
+}
