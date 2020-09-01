@@ -12,6 +12,7 @@ class Gramatica:
     automata = Automata()
     gramaticaa={}
     gramaticaaPuntos={}
+    gramaticaPuntosComas={}
     noterminal=[]
 
     def __init__(self):
@@ -34,13 +35,21 @@ class Gramatica:
         f.close()
         self.gramaticaa.get('S`').expresiones.append(list(self.gramaticaa)[1])
 
-        self.calcularPrimeros( )
-        self.imprimirPrimero()
-        self.calcularSiguientes()
-        self. imprimirSiguientes()
-        self.gramaticaaPuntos =self.gramaticaa
-        self.gramaticaaPuntos= self.ponerPuntosGramatica(self.gramaticaaPuntos)
-        self.pruebaImp()
+        #self.calcularPrimeros( )
+        #self.imprimirPrimero()
+        #self.calcularSiguientes()
+        #self. imprimirSiguientes()
+        #self.gramaticaaPuntos =self.gramaticaa
+        #self.gramaticaaPuntos= self.ponerPuntosGramatica(self.gramaticaaPuntos)
+        #self.pruebaImp()
+        self.gramaticaPuntosComas =self.gramaticaa
+        self.gramaticaPuntosComas =self.ponerPuntosYComasGramaticaLr0(self.gramaticaPuntosComas)
+        gramaticota = self.gramaticaPuntosComas
+        prueba =self.ponerPrimerosLr1EnGramatica(gramaticota)
+        for key, value in prueba.items():
+            print('no terminal :'+key)
+            for exp in value.expresiones:
+                print('expresiones con primeros bien melas'+exp)
 
 
 
@@ -204,3 +213,52 @@ class Gramatica:
                     esFinal=False
 
         return esFinal
+
+    #metodo que verifica si la gramatica lr1 es de acptacion en una expresion
+    def verificarFinLr1(self,gramatica):
+        esFinal = True
+        for noterminal in gramatica.keys():
+            for Expresion in gramatica.get(noterminal).expresiones:
+                listaExpresion = Expresion.split(' ')
+                for expresion in listaExpresion:
+                    if expresion.strip()== '.':
+                        siguientee = listaExpresion.index(expresion) + 1
+
+                        if listaExpresion[siguientee].strip() == ',' and esFinal:
+                            esFinal = True
+                        else:
+                            esFinal = False
+
+        return esFinal
+
+    def ponerPuntosYComasGramaticaLr0(self,gramatica):
+        for noterminal in gramatica.keys():
+            for expresion in gramatica.get(noterminal).expresiones:
+                    ubicacion = gramatica.get(noterminal).expresiones.index(expresion)
+                    gramatica.get(noterminal).expresiones[ubicacion] = '. ' + expresion + ' ,'
+
+
+        return gramatica
+
+
+    def ponerPrimerosLr1EnGramatica(self,gramatica):
+        for noterminal in gramatica.keys():
+            for expresion in gramatica.get(noterminal).expresiones:
+                if noterminal =='S`':
+                    ubicacion = gramatica.get(noterminal).expresiones.index(expresion)
+                    gramatica.get(noterminal).expresiones[ubicacion] =  expresion + ' $'
+
+                else:
+                    listaExpresion = expresion.split(' ')
+                    for auxExpresion in listaExpresion:
+                        if auxExpresion.strip() == '.':
+                            punto = auxExpresion.index('.')
+                            print('holi we'+str(punto))
+                            if punto + 2 < len(auxExpresion) and self.verificarFinLr1(gramatica)==False:
+                                if auxExpresion[punto+2] not in gramatica.get(noterminal):
+                                    ubicacion = gramatica.get(noterminal).expresiones.index(expresion)
+                                    gramatica.get(noterminal).expresiones[ubicacion] = expresion + auxExpresion[punto+2]
+
+
+
+        return gramatica
