@@ -1,5 +1,4 @@
-from entidad import Gramatica
 #clase de la gramatica Lr1 que hereda de gramatica
-class Lr1(Gramatica):
+class Lr1():
     def __init__(self):
         print('')

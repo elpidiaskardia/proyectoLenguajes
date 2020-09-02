@@ -9,6 +9,7 @@ class Nodo:
         self.gramatica=gramatica
         self.siguientes={}
         self.texto=self.textoNodo(gramatica)
+        self.textolr1=self.textoNodolr1(gramatica)
 
     def getValores(self):
         return self.valores
@@ -20,5 +21,14 @@ class Nodo:
         for noterminal in gramatica.keys():
             for Expresion in gramatica.get(noterminal).expresiones:
                 texto += noterminal+ '-> ' +Expresion+'\n'
+
+        return texto
+
+
+    def textoNodolr1(self,gramatica):
+        texto=''
+        for noterminal in gramatica.keys():
+            for Expresion in gramatica.get(noterminal).expresiones:
+                texto += noterminal+ '-> ' +Expresion + gramatica.get(noterminal).textoPrimeroExpre() +'\n'
 
         return texto

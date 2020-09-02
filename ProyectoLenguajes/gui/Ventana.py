@@ -4,7 +4,7 @@ import os
 from tkinter import  filedialog
 from tkinter import *
 from tkinter.simpledialog import *
-import Animacion
+from ProyectoLenguajes.gui.Animacion import Animacion
 
 from subprocess import check_call
 import pydot
@@ -27,14 +27,8 @@ def cargarGramatica():
     
 
 
-# metodo que genera el automata de la gramatica lr0
-def generarAutomataLr0():
-    print('')
 
 
-# metodo que genera el automata de la gramatica lr1
-def generarAutomataLr1():
-    print("")
 
 
 # metodo que muestra la tabla de la gramatica lr0
@@ -55,7 +49,9 @@ vs.config(bg="black")
 
 os.environ['SDL_WINDOWID'] = str(vs.winfo_id())
 os.environ['SDL_VIDEODRIVER'] = 'windib'
-anime = Animacion
+anime = Animacion()
+
+
 
 # VE-> ventana de eventos
 ve = Frame(root, width=200, height=650)
@@ -82,15 +78,7 @@ cargarGramaticaButton = Button(ve, text="Cargar", fg='white', background='tomato
 cargarGramaticaButton.grid(column=0, row=1, padx=5, pady=5, sticky='n', columnspan='2')
 cargarGramaticaButton.config(width=15, height=0)
 
-generarAutomataLr0Button = Button(ve, text="Automata LR0", fg='white', background='gray51', font='Fixedsys 16',
-                                  command=generarAutomataLr0)
-generarAutomataLr0Button.grid(column=0, row=3, padx=5, pady=5, sticky='n', columnspan='2')
-generarAutomataLr0Button.config(width=15, height=0)
 
-generarAutomataLr1Button = Button(ve, text="Automata LR1", fg='white', background='sea green', font='Fixedsys 16',
-                                  command=generarAutomataLr1)
-generarAutomataLr1Button.grid(column=0, row=4, padx=5, pady=5, sticky='n', columnspan='2')
-generarAutomataLr1Button.config(width=15, height=0)
 
 generarTablaLr0Button = Button(ve, text="Tabla LR0", fg='white', background='navy', font='Fixedsys 16',
                                command=generarTablaLr0)
@@ -100,9 +88,23 @@ generarTablaLr0Button.config(width=15, height=0)
 canvas = Canvas(root, width = 300, height = 300)
 
 
+# metodo que genera el automata de la gramatica lr0
+def generarAutomataLr0():
+    anime.generarAutomataLr0()
 
 
+# metodo que genera el automata de la gramatica lr1
+def generarAutomataLr1():
+   anime.generarAutomataLr1()
+generarAutomataLr0Button = Button(ve, text="Automata LR0", fg='white', background='gray51', font='Fixedsys 16',
+                                  command=generarAutomataLr0)
+generarAutomataLr0Button.grid(column=0, row=3, padx=5, pady=5, sticky='n', columnspan='2')
+generarAutomataLr0Button.config(width=15, height=0)
 
+generarAutomataLr1Button = Button(ve, text="Automata LR1", fg='white', background='sea green', font='Fixedsys 16',
+                                  command=generarAutomataLr1)
+generarAutomataLr1Button.grid(column=0, row=4, padx=5, pady=5, sticky='n', columnspan='2')
+generarAutomataLr1Button.config(width=15, height=0)
 
 root.mainloop()
 

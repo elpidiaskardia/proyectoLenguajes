@@ -5,8 +5,7 @@ import pygame
 
 class Animacion:
 
-    def __init__(self,ControlGramatica):
-        self.ControlGramatica=ControlGramatica
+    def __init__(self):
 
         pygame.init()
         pygame.display.get_init()
@@ -19,9 +18,20 @@ class Animacion:
 
 
 
-
-        imagen = pygame.image.load('.prueba.png')
-        self.screen.blit(imagen, (20, 20))
         pygame.display.update()
+
+    def generarAutomataLr0(self):
+        imagen = pygame.image.load('Lr0.png')
+        imagen = pygame.transform.scale(imagen,(900, 650))
+        self.screen.blit(imagen, (0, 0))
+        pygame.display.update()
+
+    # metodo que genera el automata de la gramatica lr1
+    def generarAutomataLr1(self):
+        imagen = pygame.image.load('Lr1.png')
+        imagen = pygame.transform.scale(imagen,(900, 650))
+        self.screen.blit(imagen, (0, 0))
+        pygame.display.update()
+
 
 
