@@ -1,0 +1,331 @@
+graph Lr0 {
+	"S`-> . S
+S-> . C C
+
+C-> . a C
+
+C-> . d
+
+D-> . a
+" [label=dd fillcolor=darkolivegreen1 shape=box style=filled]
+	"S`->  S .
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"S`->  S .
+" [fillcolor=cyan4 shape=box style=filled]
+	"S`-> . S
+S-> . C C
+
+C-> . a C
+
+C-> . d
+
+D-> . a
+" -- "S`->  S .
+" [label=S]
+	"S`-> . S
+S-> . C C
+
+C-> . a C
+
+C-> . d
+
+D-> . a
+" [label=dd fillcolor=darkolivegreen1 shape=box style=filled]
+	"S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"S`-> . S
+S-> . C C
+
+C-> . a C
+
+C-> . d
+
+D-> . a
+" -- "S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" [label=C]
+	"S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"S->  C  C .
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" -- "S->  C  C .
+
+" [label=C]
+	"S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" -- "C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [label=a]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  a  C .
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" -- "C->  a  C .
+
+" [label=C]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" -- "C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [label=a]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  d .
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" -- "C->  d .
+
+" [label=d]
+	"S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  d .
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"S->  C . C
+
+C-> . a C
+
+C-> . d
+
+" -- "C->  d .
+
+" [label=d]
+	"S`-> . S
+S-> . C C
+
+C-> . a C
+
+C-> . d
+
+D-> . a
+" [label=dd fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"S`-> . S
+S-> . C C
+
+C-> . a C
+
+C-> . d
+
+D-> . a
+" -- "C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" [label=a]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  a  C .
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" -- "C->  a  C .
+
+" [label=C]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" -- "C->  a . C
+
+C-> . a C
+
+C-> . d
+
+" [label=a]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  d .
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"C->  a . C
+
+C-> . a C
+
+C-> . d
+
+D->  a .
+" -- "C->  d .
+
+" [label=d]
+	"S`-> . S
+S-> . C C
+
+C-> . a C
+
+C-> . d
+
+D-> . a
+" [label=dd fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  d .
+
+" [fillcolor=darkolivegreen1 shape=box style=filled]
+	"C->  d .
+
+" [fillcolor=cyan4 shape=box style=filled]
+	"S`-> . S
+S-> . C C
+
+C-> . a C
+
+C-> . d
+
+D-> . a
+" -- "C->  d .
+
+" [label=d]
+}
